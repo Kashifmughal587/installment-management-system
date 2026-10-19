@@ -1,0 +1,21 @@
+/* =====================================================================
+   Urdu Nastaleeq font declaration.
+   Place a LICENSED .ttf in assets/fonts/ and adjust the file name here
+   (or set URDU_FONT_FILE in config.php - print templates load it too).
+   The @font-face rule degrades gracefully when the file is absent.
+   ===================================================================== */
+
+@font-face {
+    font-family: "Jameel Noori Nastaleeq";
+    src: url("../fonts/jameel-noori-nastaleeq.ttf") format("truetype");
+    unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF;
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.urdu,
+[lang="ur"],
+:lang(ur) {
+    font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Traditional Arabic", "Times New Roman", serif;
+}

@@ -1,0 +1,240 @@
+/* =====================================================================
+   Installment Management System - Application UI
+   Theme: professional green, inspired by the reference project.
+   ===================================================================== */
+
+:root {
+    --ims-primary: #00662b;
+    --ims-primary-dark: #005522;
+    --ims-primary-grad: linear-gradient(135deg, #00662b 0%, #00883a 100%);
+    --ims-sidebar-w: 250px;
+    --ims-topbar-h: 58px;
+    --ims-bg: #f2f4f6;
+    --ims-border: #e4e8ec;
+    --ims-text: #1f2933;
+    --ims-muted: #6b7785;
+}
+
+body {
+    background: var(--ims-bg);
+    color: var(--ims-text);
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14.5px;
+}
+
+/* ------------------------------ Shell ----------------------------- */
+.app-shell { display: flex; min-height: 100vh; }
+
+.app-main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.app-content { flex: 1 1 auto; padding: 20px; }
+
+/* ------------------------------ Sidebar --------------------------- */
+.app-sidebar {
+    width: var(--ims-sidebar-w);
+    flex: 0 0 var(--ims-sidebar-w);
+    background: var(--ims-primary-grad);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.app-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+}
+.app-brand-logo { height: 34px; width: auto; border-radius: 6px; background: #fff; padding: 2px; }
+.app-brand-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,.2);
+    font-size: 1.1rem;
+}
+.app-brand-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
+.app-brand-name { font-weight: 700; font-size: .95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.app-brand-sub { font-size: .72rem; opacity: .8; letter-spacing: .5px; text-transform: uppercase; }
+
+/* Text logo (shop initials) */
+.brand-initials {
+    font-weight: 800;
+    font-size: .95rem;
+    letter-spacing: .5px;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+}
+.login-mark.brand-initials { font-size: 1.5rem; }
+
+.app-nav { flex: 1 1 auto; padding: 12px 0; }
+.app-nav-heading {
+    padding: 14px 18px 6px;
+    font-size: .68rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    opacity: .7;
+}
+.app-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    color: rgba(255,255,255,.88);
+    text-decoration: none;
+    font-size: .92rem;
+    border-left: 3px solid transparent;
+    transition: background .15s ease;
+}
+.app-nav-link i { font-size: 1.05rem; width: 18px; text-align: center; }
+.app-nav-link:hover { background: rgba(255,255,255,.12); color: #fff; }
+.app-nav-link.active {
+    background: rgba(255,255,255,.22);
+    border-left-color: #fff;
+    color: #fff;
+    font-weight: 600;
+}
+
+.app-sidebar-footer { border-top: 1px solid rgba(255,255,255,.15); padding: 8px 0; }
+.app-sidebar-footer .app-nav-link { padding: 8px 18px; font-size: .87rem; }
+
+.app-sidebar-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1040;
+}
+
+/* ------------------------------ Topbar ---------------------------- */
+.app-topbar {
+    height: var(--ims-topbar-h);
+    background: #fff;
+    border-bottom: 1px solid var(--ims-border);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+.app-topbar-title { font-size: 1.05rem; font-weight: 700; margin: 0; }
+
+.app-footer {
+    padding: 12px 20px;
+    border-top: 1px solid var(--ims-border);
+    background: #fff;
+    color: var(--ims-muted);
+    font-size: .8rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ------------------------------ Cards ----------------------------- */
+.card { border: 1px solid var(--ims-border); border-radius: 10px; }
+.card-header { background: #fff; border-bottom: 1px solid var(--ims-border); font-weight: 600; }
+.card-header.bg-primary { background: var(--ims-primary-grad) !important; border: none; color: #fff; }
+
+/* --------------------------- Stat cards --------------------------- */
+.stat-card {
+    background: #fff;
+    border: 1px solid var(--ims-border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 1px 3px rgba(16,24,40,.05);
+}
+.stat-card.stat-wide { display: block; }
+.stat-icon {
+    width: 46px; height: 46px; border-radius: 10px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 1.35rem; flex: 0 0 46px;
+}
+.stat-value { display: block; font-size: 1.3rem; font-weight: 700; line-height: 1.1; }
+.stat-wide .stat-value { margin: 4px 0 2px; font-size: 1.25rem; }
+.stat-label { display: block; font-size: .76rem; color: var(--ims-muted); text-transform: uppercase; letter-spacing: .4px; }
+.stat-sub { display: block; font-size: .78rem; color: var(--ims-muted); }
+
+/* ------------------------------ Buttons --------------------------- */
+.btn-primary {
+    background: var(--ims-primary-grad);
+    border-color: var(--ims-primary);
+    color: #fff;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: var(--ims-primary-dark);
+    border-color: var(--ims-primary-dark);
+    color: #fff;
+}
+.btn-outline-primary { color: var(--ims-primary); border-color: var(--ims-primary); }
+.btn-outline-primary:hover { background: var(--ims-primary); border-color: var(--ims-primary); color: #fff; }
+.text-primary { color: var(--ims-primary) !important; }
+a { color: var(--ims-primary); }
+a:hover { color: var(--ims-primary-dark); }
+
+.form-label { font-weight: 600; font-size: .87rem; color: #34404d; }
+.form-control:focus, .form-select:focus { border-color: var(--ims-primary); box-shadow: 0 0 0 .18rem rgba(0,102,43,.2); }
+
+/* ------------------------------ Tables ---------------------------- */
+.table > :not(caption) > * > * { padding: .55rem .7rem; }
+.table thead th { font-size: .8rem; text-transform: uppercase; letter-spacing: .3px; color: #445; background: #f8fafc; }
+.table-responsive { border-radius: 8px; }
+
+/* ------------------------------ Login ----------------------------- */
+body.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ims-primary-grad);
+}
+.login-wrapper { width: 100%; max-width: 420px; padding: 20px; }
+.login-card { border: none; border-radius: 14px; overflow: hidden; }
+.login-mark, .setup-mark {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 60px; height: 60px; border-radius: 16px;
+    background: var(--ims-primary-grad); color: #fff; font-size: 1.8rem;
+}
+.login-logo { max-height: 88px; max-width: 200px; height: auto; }
+
+/* ------------------------------ Misc ------------------------------ */
+.section-title {
+    font-size: .95rem;
+    font-weight: 700;
+    margin: 0 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--ims-primary);
+}
+.empty-state { text-align: center; color: var(--ims-muted); padding: 36px 10px; }
+.empty-state i { font-size: 2.2rem; display: block; margin-bottom: 8px; }
+.actions-col { text-align: right; white-space: nowrap; }
+.duplicate-warning { border-left: 4px solid #f0ad4e; }
+
+/* --------------------------- Print helper -------------------------- */
+.print-only { display: none; }
+
+/* ------------------------------ Responsive ------------------------- */
+@media (max-width: 991.98px) {
+    .app-sidebar {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        height: 100%;
+        transform: translateX(-100%);
+        transition: transform .2s ease;
+        z-index: 1050;
+    }
+    .app-sidebar.open { transform: translateX(0); }
+    .app-sidebar-backdrop.show { display: block; }
+    .app-content { padding: 14px; }
+}

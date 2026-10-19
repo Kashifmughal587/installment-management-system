@@ -1,0 +1,8 @@
+# Installment Management System
+config.php
+logs/*.log
+storage/uploads/*
+!storage/uploads/.htaccess
+*.zip
+.DS_Store
+Thumbs.db

@@ -1,0 +1,158 @@
+/* =====================================================================
+   Document styles - A4 agreement & receipt print/PDF templates.
+   Works in the browser (Print → Save as PDF) on shared hosting.
+   ===================================================================== */
+
+@page {
+    size: A4;
+    margin: 12mm 12mm 14mm 12mm;
+}
+
+.document {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 10.5pt;
+    color: #000;
+    line-height: 1.35;
+    background: #fff;
+}
+
+/* ---- On screen we mimic the page; in print we let the browser paginate ---- */
+@media screen {
+    .document {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 16px auto;
+        padding: 12mm;
+        box-shadow: 0 0 12px rgba(0,0,0,.15);
+    }
+    .document-toolbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: #00662b;
+        padding: 10px 16px;
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+}
+
+@media print {
+    body { background: #fff !important; }
+    .document-toolbar, .no-print { display: none !important; }
+    .document { width: auto; margin: 0; padding: 0; box-shadow: none; }
+}
+
+/* ------------------------------ Header ---------------------------- */
+.doc-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+.doc-logo { max-height: 64px; max-width: 90px; }
+.doc-logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #00662b;
+    color: #fff;
+    font-weight: 800;
+    font-size: 18pt;
+    letter-spacing: 1px;
+    flex: 0 0 56px;
+}
+.doc-header-text { flex: 1 1 auto; }
+.doc-shop-name { font-size: 18pt; font-weight: 700; margin: 0 0 2px; line-height: 1.1; }
+.doc-shop-meta { font-size: 9pt; color: #333; margin: 0; }
+.doc-title {
+    text-align: center;
+    font-size: 14pt;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 8px 0;
+    padding: 5px;
+    border: 1px solid #000;
+    background: #f0f0f0;
+}
+
+/* ------------------------------ Tables ---------------------------- */
+table.doc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 8px;
+    page-break-inside: auto;
+}
+table.doc-table th,
+table.doc-table td {
+    border: 0.6pt solid #000;
+    padding: 4px 6px;
+    vertical-align: top;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+table.doc-table th {
+    background: #eaeaea;
+    font-weight: 700;
+    text-align: left;
+    font-size: 9pt;
+}
+table.doc-table thead th { background: #e0e0e0; }
+/* Repeat header rows on every printed page */
+table.doc-table thead { display: table-header-group; }
+table.doc-table tfoot { display: table-footer-group; }
+table.doc-table tr { page-break-inside: avoid; }
+
+.doc-section-title {
+    background: #333;
+    color: #fff;
+    font-weight: 700;
+    font-size: 9.5pt;
+    padding: 4px 8px;
+    margin: 8px 0 0;
+}
+
+.doc-kv td { border: 0.6pt solid #000; padding: 4px 6px; }
+.doc-kv .k { width: 30%; font-weight: 600; background: #f6f6f6; }
+
+.doc-right { text-align: right; }
+.doc-center { text-align: center; }
+.doc-mono { font-variant-numeric: tabular-nums; }
+
+.doc-figure { margin: 0; }
+.doc-figure td { border: 0.6pt solid #000; padding: 4px 8px; }
+.doc-figure .label { background: #f6f6f6; font-weight: 600; }
+
+/* ---------------------------- Signatures -------------------------- */
+.sig-grid {
+    display: flex;
+    gap: 14px;
+    margin-top: 26px;
+    page-break-inside: avoid;
+}
+.sig-box { flex: 1 1 0; text-align: center; }
+.sig-line { border-top: 1px solid #000; margin-top: 40px; padding-top: 4px; font-size: 8.5pt; }
+.sig-img { height: 38px; margin-bottom: -6px; }
+
+/* --------------------------- Page breaks -------------------------- */
+.page-break { page-break-after: always; break-after: page; }
+.avoid-break { page-break-inside: avoid; break-inside: avoid; }
+.doc-terms { white-space: pre-line; font-size: 9pt; }
+
+/* ---------------------------- Urdu / RTL -------------------------- */
+.document[dir="rtl"],
+.doc-ur,
+[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+.doc-ur { font-family: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", serif; font-size: 11pt; line-height: 1.9; }
+
+.doc-footer-note { font-size: 8pt; color: #444; text-align: center; margin-top: 10px; }
+.doc-page-number { font-size: 8pt; color: #444; text-align: center; }

@@ -1,0 +1,7 @@
+# Keep private uploads out of web reach
+Require all denied
+
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
